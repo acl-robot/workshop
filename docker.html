@@ -1,0 +1,612 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docker &mdash; Robot Group Workshop</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Robot Group Workshop" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">0. Motivation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-docker-solves-these">How Docker Solves These</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-does-it-mean-for-us">What does it Mean for Us?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#so-what-exactly-is-docker">1. So What Exactly is Docker?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-containerization">What is Containerization?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#architecture-of-docker">Architecture of Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-installation">2. Docker Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-install-docker-engine">a. Install Docker Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#b-post-installation">b. Post installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#demo-1-install-ros2-humble-via-docker">3. Demo 1: Install ROS2 Humble via Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-images-and-containers">4. Working with Images and Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#demo-2-create-a-custom-docker-image">5. Demo 2: Create a Custom Docker Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#container-runtime-environment">6. Container Runtime Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demo-3-docker-compose">7. Demo 3: Docker Compose</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">8. Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Robot Group Workshop</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Docker</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/docker.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="docker">
+<h1>Docker<a class="headerlink" href="#docker" title="Link to this heading"></a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Author<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Jack Lo</p>
+</dd>
+<dt class="field-even">Date<span class="colon">:</span></dt>
+<dd class="field-even"><p>2025-08-07</p>
+</dd>
+</dl>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Goal</strong>: Learn the basics of Docker, understand images vs containers, and
+run your first custom container with runtime configurations for graphical
+applications.</p></li>
+<li><p><strong>Duration</strong>: Around 1 hour including demonstrations.</p></li>
+<li><p><strong>Assumptions</strong>: A Linux system (also tested on <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL2</a>), preferably Ubuntu
+24.04.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Though Docker can be run on Windows and macOS as well, but their setup might
+differ and will not be covered in this workshop.</p>
+</div>
+</section>
+<section id="motivation">
+<h2>0. Motivation<a class="headerlink" href="#motivation" title="Link to this heading"></a></h2>
+<p>In modern software development and deployment, developers face several
+challenges:</p>
+<ul class="simple">
+<li><p><strong>“It works on my machine” problem</strong></p>
+<ul>
+<li><p>Applications often fail when moved from one machine to another</p></li>
+<li><p>Environment inconsistencies cause bugs that are hard to reproduce</p></li>
+</ul>
+</li>
+<li><p><strong>Complex Dependency Management</strong></p>
+<ul>
+<li><p>Applications may depend on specific versions of Python, ROS, or system
+libraries (things installed via <code class="docutils literal notranslate"><span class="pre">apt</span></code>)</p></li>
+<li><p>Installing and updating dependencies on different machines can break
+existing setups</p></li>
+</ul>
+</li>
+<li><p><strong>Resource Inefficiency with Virtual Machines</strong></p>
+<ul>
+<li><p>Virtual machines (VMs) are heavy:</p>
+<ul>
+<li><p>Each VM has its own operating system</p></li>
+<li><p>Startup times are slow</p></li>
+<li><p>Storage footprint is large (GBs per VM)</p></li>
+</ul>
+</li>
+<li><p>Running multiple VMs on a single machine quickly consumes CPU and memory</p></li>
+</ul>
+</li>
+</ul>
+<section id="how-docker-solves-these">
+<h3>How Docker Solves These<a class="headerlink" href="#how-docker-solves-these" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Lightweight and Fast</strong></p>
+<ul>
+<li><p>Containers share the host OS kernel</p></li>
+<li><p>Start in seconds instead of minutes</p></li>
+</ul>
+</li>
+<li><p><strong>Consistent and Portable</strong></p>
+<ul>
+<li><p>The same Docker image runs everywhere: local machine, cloud, or production
+servers</p></li>
+<li><p>Eliminates environment drift between developers and deployment</p></li>
+</ul>
+</li>
+<li><p><strong>Efficient Resource Usage</strong></p>
+<ul>
+<li><p>Containers are smaller than VMs (MBs vs GBs)</p></li>
+<li><p>Multiple containers can run on the same machine with less overhead</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Docker does <strong>not replace</strong> virtual machines entirely, but provides a more
+efficient and reproducible approach for most application deployments.</p>
+</div>
+</section>
+<section id="what-does-it-mean-for-us">
+<h3>What does it Mean for Us?<a class="headerlink" href="#what-does-it-mean-for-us" title="Link to this heading"></a></h3>
+<ul>
+<li><p><strong>Faster Deployment</strong>: Applications can be deployed quickly and reliably
+across different environments.</p>
+<p>For example, you can setup a Mincecraft server in one command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">it</span> <span class="o">-</span><span class="n">p</span> <span class="mi">25565</span><span class="p">:</span><span class="mi">25565</span> <span class="o">-</span><span class="n">e</span> <span class="n">EULA</span><span class="o">=</span><span class="n">TRUE</span> <span class="n">itzg</span><span class="o">/</span><span class="n">minecraft</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Reproducibility</strong>: Ensures that the application behaves the same way in
+development, testing, and production. <strong>What works on your machine will also
+work on the robot.</strong></p></li>
+<li><p><strong>Isolation</strong>: Containers provide isolated environments for applications,
+ensuring that dependencies and configurations do not interfere with each
+other. <strong>And when the development environment in a container is corrupted, it
+can be easily recreated by deleting the container and starting a new one.</strong></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although Docker is typically used for deploying applications, in Robot Group
+we use it to set up development environments for robotics applications such
+as <a class="reference external" href="https://www.ros.org">ROS</a>, <a class="reference external" href="https://developer.nvidia.com/isaac/sim">NVIDIA Isaac Sim</a> and more. As a result, the
+environment setup inside the container may differ quite a bit from the image.</p>
+</div>
+</section>
+</section>
+<section id="so-what-exactly-is-docker">
+<span id="workshop-docker-what-is-docker"></span><h2>1. So What Exactly is Docker?<a class="headerlink" href="#so-what-exactly-is-docker" title="Link to this heading"></a></h2>
+<p>Docker allows you to <strong>package an application and all its dependencies</strong> into a
+single, portable unit called a <strong>container</strong>. This process is known as
+<strong>containerization</strong>.</p>
+<section id="what-is-containerization">
+<h3>What is Containerization?<a class="headerlink" href="#what-is-containerization" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Containerization</strong> is the process of bundling:</p>
+<ol class="arabic simple">
+<li><p>Application code</p></li>
+<li><p>Runtime environment (e.g., Python, ROS)</p></li>
+<li><p>System libraries and dependencies</p></li>
+<li><p>Configuration files</p></li>
+</ol>
+</li>
+<li><p>These are packaged into a <strong>Docker image</strong>.</p></li>
+<li><p>When the image is executed, Docker creates an <strong>isolated container</strong> that runs
+the application exactly the same on any host.</p></li>
+</ul>
+</section>
+<section id="architecture-of-docker">
+<h3>Architecture of Docker<a class="headerlink" href="#architecture-of-docker" title="Link to this heading"></a></h3>
+<p>Docker uses a client-server architecture to manage and run containers.</p>
+<figure class="align-center" id="id4">
+<img alt="https://docs.docker.com/get-started/images/docker-architecture.webp" src="https://docs.docker.com/get-started/images/docker-architecture.webp" />
+<figcaption>
+<p><span class="caption-text">Docker Architecture</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The key components in Docker are:</p>
+<ul class="simple">
+<li><p><strong>Docker Client</strong>: The interface through which users interact with Docker.
+Which is <a class="reference external" href="https://docs.docker.com/reference/cli/docker">Docker CLI</a>
+in this workshop.</p></li>
+<li><p><strong>Docker Daemon</strong>: The core service that runs on the host machine. It listens
+to Docker API requests and manages Docker objects such as images, containers,
+networks, and volumes.</p></li>
+<li><p><strong>Docker Images</strong>: Read-only templates used to create containers. Images are
+built using a Dockerfile and can be stored in a registry.</p></li>
+<li><p><strong>Docker Containers</strong>: Lightweight, portable, and isolated environments
+created from Docker images. Containers share the host OS kernel but have their
+own filesystem, processes, and network stack.</p></li>
+<li><p><strong>Docker Registries</strong>: Centralized repositories where Docker images are stored
+and shared. Docker Hub is the default public registry.</p></li>
+</ul>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.docker.com/get-started/docker-overview">Docker overview</a></p></li>
+</ul>
+</section>
+</section>
+<section id="docker-installation">
+<h2>2. Docker Installation<a class="headerlink" href="#docker-installation" title="Link to this heading"></a></h2>
+<section id="a-install-docker-engine">
+<h3>a. Install Docker Engine<a class="headerlink" href="#a-install-docker-engine" title="Link to this heading"></a></h3>
+<p>Follow the <a class="reference external" href="https://docs.docker.com/engine/install">official installation guide</a> to install Docker Engine on your
+machine. Or you can install Docker Engine using the installation script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">fsSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">get</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span> <span class="o">-</span><span class="n">o</span> <span class="n">get</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">sudo</span> <span class="n">sh</span> <span class="n">get</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>After installation, verify Docker is running by executing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+</section>
+<section id="b-post-installation">
+<h3>b. Post installation<a class="headerlink" href="#b-post-installation" title="Link to this heading"></a></h3>
+<p>Since Docker requires root privileges, it is recommended to follow the <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall">official
+post-installation steps</a> to run Docker
+commands without <code class="docutils literal notranslate"><span class="pre">sudo</span></code>.</p>
+<p>Essentially, you need to add your user to the <code class="docutils literal notranslate"><span class="pre">docker</span></code> group:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo usermod -aG docker $USER
+</pre></div>
+</div>
+<p>And then apply the changes to group:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newgrp</span> <span class="n">docker</span>
+</pre></div>
+</div>
+<p>Finally, verify that you can run Docker commands without <code class="docutils literal notranslate"><span class="pre">sudo</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="demo-1-install-ros2-humble-via-docker">
+<h2>3. Demo 1: Install ROS2 Humble via Docker<a class="headerlink" href="#demo-1-install-ros2-humble-via-docker" title="Link to this heading"></a></h2>
+<p>Install ROS is as easy as running a single command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="n">osrf</span><span class="o">/</span><span class="n">ros</span><span class="p">:</span><span class="n">humble</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">full</span>
+</pre></div>
+</div>
+<p>This command;</p>
+<ol class="arabic simple">
+<li><p>pulls the image if not available locally</p></li>
+<li><p>creates and runs a container</p></li>
+<li><p>attaches an interactive terminal to the container (<code class="docutils literal notranslate"><span class="pre">-it</span></code> flags)</p></li>
+</ol>
+<p>After sourcing ROS2, you can varify that ROS2 is installed by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ros</span><span class="o">/</span><span class="n">humble</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
+<span class="n">ros2</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+</section>
+<section id="working-with-images-and-containers">
+<h2>4. Working with Images and Containers<a class="headerlink" href="#working-with-images-and-containers" title="Link to this heading"></a></h2>
+<p>Open another terminal, and use the following commands to manage Docker images
+and containers.</p>
+<ol class="arabic">
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> to list running containers, it should show something like
+this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONTAINER</span> <span class="n">ID</span>   <span class="n">IMAGE</span>                          <span class="n">COMMAND</span>                  <span class="n">CREATED</span>         <span class="n">STATUS</span>         <span class="n">PORTS</span>     <span class="n">NAMES</span>
+<span class="n">a6f286ce8dfe</span>   <span class="n">osrf</span><span class="o">/</span><span class="n">ros</span><span class="p">:</span><span class="n">humble</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">full</span>   <span class="s2">&quot;/ros_entrypoint.sh …&quot;</span>   <span class="mi">3</span> <span class="n">minutes</span> <span class="n">ago</span>   <span class="n">Up</span> <span class="mi">3</span> <span class="n">minutes</span>             <span class="n">brave_thompson</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="tip admonition">
+<p class="admonition-title">Fun Fact</p>
+<p>Notice the funny name of the container? Docker automatically generates random
+names for unnamed containers using a combination of an adjective and the
+surname of a famous person. You can actually find the list of names in
+<a class="reference external" href="https://github.com/moby/moby/blob/master/pkg/namesgenerator/names-generator.go">moby/moby repository</a>.</p>
+</div>
+<ol class="arabic" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code> to list available images, it should show something like
+this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REPOSITORY</span>  <span class="n">TAG</span>                    <span class="n">IMAGE</span> <span class="n">ID</span>       <span class="n">CREATED</span>        <span class="n">SIZE</span>
+<span class="n">osrf</span><span class="o">/</span><span class="n">ros</span>    <span class="n">humble</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">full</span>    <span class="n">fd45c15db49b</span>   <span class="mi">2</span> <span class="n">weeks</span> <span class="n">ago</span>    <span class="mf">3.84</span><span class="n">GB</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Some other commands to manage images and containers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">start</span> <span class="pre">&lt;container_name_or_id&gt;</span></code>: Start a stopped container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">stop</span> <span class="pre">&lt;container_name_or_id&gt;</span></code>: Stop a running container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">attach</span> <span class="pre">&lt;container_name_or_id&gt;</span></code>: Attach to a running container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">&lt;container_name_or_id&gt;</span> <span class="pre">&lt;command&gt;</span></code>: Run a command in a
+running container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">&lt;container_name_or_id&gt;</span></code>: Remove a stopped container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">image</span> <span class="pre">rm</span> <span class="pre">&lt;image_tag_or_id&gt;</span></code>: Remove an image</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since the container will stop once its entrypoint exits, when you exit the
+terminal by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl+D</span></code>, the container will also stop. You can
+restart it using <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">start</span></code> and then attach to it using
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">attach</span></code>.</p>
+</div>
+<section id="id1">
+<h3>References<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.docker.com/reference/cli/docker">Docker CLI reference</a></p></li>
+</ul>
+</section>
+</section>
+<section id="demo-2-create-a-custom-docker-image">
+<h2>5. Demo 2: Create a Custom Docker Image<a class="headerlink" href="#demo-2-create-a-custom-docker-image" title="Link to this heading"></a></h2>
+<p>I heard that <code class="docutils literal notranslate"><span class="pre">vim</span></code> is your favorite text editor, and you prefer <code class="docutils literal notranslate"><span class="pre">htop</span></code> to
+monitor system resources instead of <code class="docutils literal notranslate"><span class="pre">top</span></code>. Unfortunately, since none of these
+tools are included in the ROS Docker image. Luckily, Docker allows us to
+create your own custom images that include these tools so you don’t have to
+install them every time you start a new container.</p>
+<p>Docker uses a file called <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> to define how to build an image. This
+file contains a series of instructions that Docker uses to create the image.</p>
+<ol class="arabic">
+<li><p>First create a new <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> with the following content:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># based on ROS Humble</span>
+<span class="n">FROM</span> <span class="n">osrf</span><span class="o">/</span><span class="n">ros</span><span class="p">:</span><span class="n">humble</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">full</span>
+
+<span class="c1"># install additional packages</span>
+<span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> \
+    <span class="n">htop</span> \
+    <span class="n">vim</span> \
+    <span class="o">&amp;&amp;</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">lists</span><span class="o">/*</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code> in the directory containing the <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">my</span><span class="o">-</span><span class="n">ros</span><span class="p">:</span><span class="n">humble</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>This command;</p>
+<ol class="arabic simple">
+<li><p>Reads the <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> in the current directory (<cite>.</cite>)</p></li>
+<li><p>Builds the image and tags it as <code class="docutils literal notranslate"><span class="pre">my-ros:humble</span></code></p></li>
+</ol>
+</li>
+<li><p>Verify the image is built using <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code>, it should show something
+like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REPOSITORY</span>  <span class="n">TAG</span>                    <span class="n">IMAGE</span> <span class="n">ID</span>       <span class="n">CREATED</span>         <span class="n">SIZE</span>
+<span class="n">my</span><span class="o">-</span><span class="n">ros</span>      <span class="n">humble</span>                 <span class="mi">910</span><span class="n">d5986f63a</span>   <span class="mi">7</span> <span class="n">minutes</span> <span class="n">ago</span>   <span class="mf">3.88</span><span class="n">GB</span>
+<span class="n">osrf</span><span class="o">/</span><span class="n">ros</span>    <span class="n">humble</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">full</span>    <span class="n">fd45c15db49b</span>   <span class="mi">2</span> <span class="n">weeks</span> <span class="n">ago</span>     <span class="mf">3.84</span><span class="n">GB</span>
+</pre></div>
+</div>
+</li>
+<li><p>Finally, we can test our custom image by running a container from it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="n">my</span><span class="o">-</span><span class="n">ros</span><span class="p">:</span><span class="n">humble</span>
+</pre></div>
+</div>
+<p>And you should be able to use <code class="docutils literal notranslate"><span class="pre">vim</span></code> and <code class="docutils literal notranslate"><span class="pre">htop</span></code> without installation
+inside the container.</p>
+</li>
+</ol>
+<section id="id2">
+<h3>References<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.docker.com/build/concepts/dockerfile">Dockerfile overview</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/reference/dockerfile">Dockerfile reference</a></p></li>
+</ul>
+</section>
+</section>
+<section id="container-runtime-environment">
+<h2>6. Container Runtime Environment<a class="headerlink" href="#container-runtime-environment" title="Link to this heading"></a></h2>
+<p>As mentioned in <a class="reference internal" href="#workshop-docker-what-is-docker"><span class="std std-ref">1. So What Exactly is Docker?</span></a>, Docker containers are
+isolated environments that run applications. The isolation includes:</p>
+<ul class="simple">
+<li><p><strong>Filesystem</strong>: Each container has its own filesystem, which is a copy of the
+image it was created from. Changes made inside the container do not affect the
+host filesystem or other containers.</p></li>
+<li><p><strong>Processes</strong>: Containers run their own processes, which are isolated from the
+host and other containers. This means you can run multiple instances of the
+same application without conflicts.</p></li>
+<li><p><strong>Network</strong>: Each container has its own network stack, allowing it to have its
+own IP address and ports. Containers can communicate with each other through
+defined networks or by exposing ports to the host.</p></li>
+<li><p><strong>Environment Variables</strong>: Containers can have their own set of environment
+variables, which can be set at runtime. This allows you to configure the
+application running inside the container without modifying the image.</p></li>
+</ul>
+<p>And many other mechanisms to ensure the host and containers are isolated from
+each other.</p>
+<p>For example, when running <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> in the container we just created after
+sourcing ros:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ros</span><span class="o">/</span><span class="n">humble</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
+<span class="n">rviz2</span>
+</pre></div>
+</div>
+<p>It will not work with the following error messages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qt</span><span class="o">.</span><span class="n">qpa</span><span class="o">.</span><span class="n">xcb</span><span class="p">:</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">display</span>
+<span class="n">qt</span><span class="o">.</span><span class="n">qpa</span><span class="o">.</span><span class="n">plugin</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">load</span> <span class="n">the</span> <span class="n">Qt</span> <span class="n">platform</span> <span class="n">plugin</span> <span class="s2">&quot;xcb&quot;</span> <span class="ow">in</span> <span class="s2">&quot;&quot;</span> <span class="n">even</span> <span class="n">though</span> <span class="n">it</span> <span class="n">was</span> <span class="n">found</span><span class="o">.</span>
+<span class="n">This</span> <span class="n">application</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">start</span> <span class="n">because</span> <span class="n">no</span> <span class="n">Qt</span> <span class="n">platform</span> <span class="n">plugin</span> <span class="n">could</span> <span class="n">be</span> <span class="n">initialized</span><span class="o">.</span> <span class="n">Reinstalling</span> <span class="n">the</span> <span class="n">application</span> <span class="n">may</span> <span class="n">fix</span> <span class="n">this</span> <span class="n">problem</span><span class="o">.</span>
+
+<span class="n">Available</span> <span class="n">platform</span> <span class="n">plugins</span> <span class="n">are</span><span class="p">:</span> <span class="n">eglfs</span><span class="p">,</span> <span class="n">linuxfb</span><span class="p">,</span> <span class="n">minimal</span><span class="p">,</span> <span class="n">minimalegl</span><span class="p">,</span> <span class="n">offscreen</span><span class="p">,</span> <span class="n">vnc</span><span class="p">,</span> <span class="n">xcb</span><span class="o">.</span>
+
+<span class="n">Aborted</span> <span class="p">(</span><span class="n">core</span> <span class="n">dumped</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is because the container does not have access to the host’s display server
+(<code class="docutils literal notranslate"><span class="pre">X11</span></code>) by default. To run GUI applications inside a Docker container, you
+need to run the container with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># allow the container to access the host&#39;s display
+xhost +local:docker
+docker run -it \
+    --env DISPLAY=$DISPLAY \
+    --env QT_X11_NO_MITSHM=1 \
+    --volume /tmp/.X11-unix:/tmp/.X11-unix \
+    my-ros:humble
+</pre></div>
+</div>
+<p>This command;</p>
+<ol class="arabic simple">
+<li><p>Sets appropriate environment variables (<code class="docutils literal notranslate"><span class="pre">--env</span></code> flag), notably
+<code class="docutils literal notranslate"><span class="pre">DISPLAY</span></code> to the same value as the host’s display.</p></li>
+<li><p>Mounts the host’s X11 socket into the container (<code class="docutils literal notranslate"><span class="pre">--volume</span></code> flag),
+allowing the container to communicate with the host’s display server.</p></li>
+</ol>
+<p>Essentially, specifying this flags losens the isolation between the container
+and the host. Besides mounting host’s directories, you can also bind the host’s
+ports to the containers’, or share host’s GPU, etc. to suit the needs of your
+application.</p>
+<p>Finally <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> should work as expected.</p>
+<img alt="https://docs.ros.org/en/rolling/p/rviz2/_images/empty-rviz.png" class="align-center" src="https://docs.ros.org/en/rolling/p/rviz2/_images/empty-rviz.png" />
+</section>
+<section id="demo-3-docker-compose">
+<h2>7. Demo 3: Docker Compose<a class="headerlink" href="#demo-3-docker-compose" title="Link to this heading"></a></h2>
+<p>But don’t you think that running containers with all these options is a bit
+tedious? Fortunately, Docker provides a tool called <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">Compose</span></code> that
+allows you to define the runtime configurations of containers using a YAML file
+called <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> so you don’t have to remember all the options
+and flags.</p>
+<p>Let’s use Docker Compose to keep the configs required for running <code class="docutils literal notranslate"><span class="pre">rviz2</span></code>.</p>
+<ol class="arabic">
+<li><p>Create a new file named <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> with the following content:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>services:
+  ros:
+    image: my-ros:humble
+    container_name: my_ros
+    tty: true
+    stdin_open: true
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+</pre></div>
+</div>
+</li>
+<li><p>Run the following command to start the container defined in the
+<code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>This command;</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Reads the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file in the current directory</p></li>
+<li><p>Creates and starts the container named <code class="docutils literal notranslate"><span class="pre">my_ros</span></code> defined in the file in
+detached mode (<code class="docutils literal notranslate"><span class="pre">-d</span></code> flag)</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Verify the container is running using <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code>, it should show something
+like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONTAINER</span> <span class="n">ID</span>   <span class="n">IMAGE</span>                          <span class="n">COMMAND</span>                  <span class="n">CREATED</span>          <span class="n">STATUS</span>         <span class="n">PORTS</span>     <span class="n">NAMES</span>
+<span class="mf">93e64951</span><span class="n">f4dd</span>   <span class="n">my</span><span class="o">-</span><span class="n">ros</span><span class="p">:</span><span class="n">humble</span>                  <span class="s2">&quot;/ros_entrypoint.sh …&quot;</span>   <span class="mi">3</span> <span class="n">minutes</span> <span class="n">ago</span>    <span class="n">Up</span> <span class="mi">3</span> <span class="n">minutes</span>             <span class="n">my_ros</span>
+<span class="mi">76780735</span><span class="n">b1d3</span>   <span class="n">my</span><span class="o">-</span><span class="n">ros</span><span class="p">:</span><span class="n">humble</span>                  <span class="s2">&quot;/ros_entrypoint.sh …&quot;</span>   <span class="mi">12</span> <span class="n">minutes</span> <span class="n">ago</span>   <span class="n">Up</span> <span class="mi">12</span> <span class="n">minutes</span>            <span class="n">wizardly_boyd</span>
+<span class="n">a6f286ce8dfe</span>   <span class="n">osrf</span><span class="o">/</span><span class="n">ros</span><span class="p">:</span><span class="n">humble</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">full</span>   <span class="s2">&quot;/ros_entrypoint.sh …&quot;</span>   <span class="mi">21</span> <span class="n">minutes</span> <span class="n">ago</span>   <span class="n">Up</span> <span class="mi">21</span> <span class="n">minutes</span>            <span class="n">brave_thompson</span>
+</pre></div>
+</div>
+</li>
+<li><p>Finally, we can test the newly created container by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">my_ros</span> <span class="n">bash</span>
+</pre></div>
+</div>
+<p>This command runs a interactive terminal in the container named <code class="docutils literal notranslate"><span class="pre">my_ros</span></code>.
+And <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> should work after sourcing ROS2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ros</span><span class="o">/</span><span class="n">humble</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
+<span class="n">rviz2</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<section id="id3">
+<h3>References<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.docker.com/compose/intro/compose-application-model">Docker Compose overview</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/reference/compose-file">Docker compose file reference</a></p></li>
+</ul>
+</section>
+</section>
+<section id="conclusion">
+<h2>8. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>In this workshop, we explored the fundamentals of Docker, including itsarchitecture, installation, and practical use cases. We demonstrated how to:</p>
+<ul class="simple">
+<li><p>Install and configure Docker on a Linux system.</p></li>
+<li><p>Run and manage containers using Docker CLI commands.</p></li>
+<li><p>Create custom Docker images tailored to specific needs.</p></li>
+<li><p>Use Docker Compose to simplify container runtime configurations.</p></li>
+</ul>
+<p>By leveraging Docker, you can ensure consistent, portable, and efficient
+development and deployment environments. Whether you’re working on robotics
+applications, web services, or any other software, Docker provides the tools to
+streamline your workflow and eliminate environment-related issues.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Robot Group Workshop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, NTU ACL Robot Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

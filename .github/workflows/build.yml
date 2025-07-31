@@ -1,0 +1,29 @@
+name: Documentation Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Build documentation
+      id: build
+      uses: sphinx-notes/pages@v3
+      with:
+        documentation_path: doc
+        requirements_path: requirements.txt
+        publish: false
+
+    - name: Publish to github pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ${{ steps.build.outputs.artifact }}

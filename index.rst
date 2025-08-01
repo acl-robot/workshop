@@ -3,9 +3,15 @@ Welcome to Robot Group Workshop
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
+   :caption: Workshops
 
-   docker
+   docker/index
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contributing
+
+   contributing
 
 Indices and tables
 ==================

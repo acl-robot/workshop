@@ -1,0 +1,11 @@
+services:
+  ros:
+    image: my-ros:humble
+    container_name: my_ros
+    tty: true
+    stdin_open: true
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix

@@ -272,16 +272,11 @@ install them every time you start a new container.
 Docker uses a file called ``Dockerfile`` to define how to build an image. This
 file contains a series of instructions that Docker uses to create the image.
 
-1. First create a new ``Dockerfile`` with the following content::
+1. First create a new ``Dockerfile`` with the following content:
 
-       # based on ROS Humble
-       FROM osrf/ros:humble-desktop-full
-
-       # install additional packages
-       RUN apt-get update && apt-get install -y \
-           htop \
-           vim \
-           && rm -rf /var/lib/apt/lists/*
+  .. literalinclude:: Dockerfile
+     :language: docker
+     :linenos:
 
 2. Run ``docker build`` in the directory containing the ``Dockerfile``::
 
@@ -385,24 +380,16 @@ Finally ``rviz2`` should work as expected.
 But don't you think that running containers with all these options is a bit
 tedious? Fortunately, Docker provides a tool called ``Docker Compose`` that
 allows you to define the runtime configurations of containers using a YAML file
-called ``docker-compose.yml`` so you don't have to remember all the options
+called ``docker-compose.yaml`` so you don't have to remember all the options
 and flags.
 
 Let's use Docker Compose to keep the configs required for running ``rviz2``.
 
-1. Create a new file named ``docker-compose.yml`` with the following content::
+1. Create a new file named ``docker-compose.yaml`` with the following content:
 
-       services:
-         ros:
-           image: my-ros:humble
-           container_name: my_ros
-           tty: true
-           stdin_open: true
-           environment:
-             - DISPLAY=${DISPLAY}
-             - QT_X11_NO_MITSHM=1
-           volumes:
-             - /tmp/.X11-unix:/tmp/.X11-unix
+   .. literalinclude:: docker-compose.yaml
+      :language: yaml
+      :linenos:
 
 2. Run the following command to start the container defined in the
    ``docker-compose.yml`` file::

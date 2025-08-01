@@ -13,6 +13,7 @@ To add a new page to the workshop:
      directory.
 
 2. Update the `index.rst` file to include a reference to your new page.
+
    - Add the relative path to your `.rst` file under the appropriate section.
 
 3. Ensure your `.rst` file follows the ``reStructuredText`` format and includes

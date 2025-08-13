@@ -6,6 +6,7 @@ Welcome to Robot Group Workshop
    :caption: Workshops
 
    docker/index
+   ROS2/index
 
 .. toctree::
    :maxdepth: 1

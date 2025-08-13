@@ -1,0 +1,1310 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROS2 Beginner Workshop &mdash; Robot Group Workshop</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contribute to the Workshop" href="../contributing.html" />
+    <link rel="prev" title="Docker" href="../docker/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Workshops</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ROS2 Beginner Workshop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#shell-bash-and-linux-basics">1. Shell, Bash, and Linux Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ros-2-environment-setup">2. ROS 2 Environment Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-turtlesim-ros2-and-rqt">3. Using turtlesim, ros2, and rqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-nodes">4. Understanding Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-topics">5. Understanding Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-services">6. Understanding Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-parameters">7. Understanding Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-actions">8. Understanding Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recording-and-playing-back-data-with-ros2-bag">9. Recording and Playing Back Data with ros2 bag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-and-set-up-a-ros2-workspace">10. Create and Set Up a ROS2 Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-ros2-python-package">11. Create a ROS2 Python Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#write-a-ros2-publisher-with-python">12. Write a ROS2 Publisher with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#write-a-ros2-subscriber-with-python">13. Write a ROS2 Subscriber with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribute to the Workshop</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Robot Group Workshop</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ROS2 Beginner Workshop</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/ROS2/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ros2-beginner-workshop">
+<h1>ROS2 Beginner Workshop<a class="headerlink" href="#ros2-beginner-workshop" title="Link to this heading"></a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Author<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Kuan-Ting Lin</p>
+</dd>
+<dt class="field-even">Date<span class="colon">:</span></dt>
+<dd class="field-even"><p>2025-08-28</p>
+</dd>
+</dl>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#shell-bash-and-linux-basics" id="id1">1. Shell, Bash, and Linux Basics</a></p></li>
+<li><p><a class="reference internal" href="#ros-2-environment-setup" id="id2">2. ROS 2 Environment Setup</a></p></li>
+<li><p><a class="reference internal" href="#using-turtlesim-ros2-and-rqt" id="id3">3. Using turtlesim, ros2, and rqt</a></p></li>
+<li><p><a class="reference internal" href="#understanding-nodes" id="id4">4. Understanding Nodes</a></p></li>
+<li><p><a class="reference internal" href="#understanding-topics" id="id5">5. Understanding Topics</a></p></li>
+<li><p><a class="reference internal" href="#understanding-services" id="id6">6. Understanding Services</a></p></li>
+<li><p><a class="reference internal" href="#understanding-parameters" id="id7">7. Understanding Parameters</a></p></li>
+<li><p><a class="reference internal" href="#understanding-actions" id="id8">8. Understanding Actions</a></p></li>
+<li><p><a class="reference internal" href="#recording-and-playing-back-data-with-ros2-bag" id="id9">9. Recording and Playing Back Data with ros2 bag</a></p></li>
+<li><p><a class="reference internal" href="#create-and-set-up-a-ros2-workspace" id="id10">10. Create and Set Up a ROS2 Workspace</a></p></li>
+<li><p><a class="reference internal" href="#create-a-ros2-python-package" id="id11">11. Create a ROS2 Python Package</a></p></li>
+<li><p><a class="reference internal" href="#write-a-ros2-publisher-with-python" id="id12">12. Write a ROS2 Publisher with Python</a></p></li>
+<li><p><a class="reference internal" href="#write-a-ros2-subscriber-with-python" id="id13">13. Write a ROS2 Subscriber with Python</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id14">Summary</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id15">References</a></p></li>
+</ul>
+</nav>
+<section id="shell-bash-and-linux-basics">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1. Shell, Bash, and Linux Basics</a><a class="headerlink" href="#shell-bash-and-linux-basics" title="Link to this heading"></a></h2>
+<p>A <strong>shell</strong> is a command-line interface (CLI) that allows users to interact with the operating system’s kernel by typing commands.
+It interprets these commands and translates them into actions that the system can perform.
+In Linux environments, the shell is typically text-based, although graphical shells also exist.</p>
+<p><strong>bash</strong> (Bourne Again Shell) is one of the most widely used shells in Linux and is the default in many distributions.</p>
+<p>It provides features such as:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Command history (navigate with ↑ / ↓ arrows)</p></li>
+<li><p>Tab completion for files and commands</p></li>
+<li><p>Scripting capabilities with variables, loops, and conditionals</p></li>
+</ul>
+</div></blockquote>
+<p><strong>What is a Linux distribution?</strong>
+A <strong>Linux distribution</strong> (distro) is a complete operating system built around the Linux kernel, packaged with system utilities, libraries, and a package manager.
+Different distributions vary in design, default tools, and target audience.</p>
+<p>Common distributions include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ubuntu</p></li>
+<li><p>Debian</p></li>
+<li><p>Fedora</p></li>
+<li><p>Arch Linux</p></li>
+<li><p>Linux Mint</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Why is Ubuntu popular for personal use?</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Easy installation with a graphical installer</p></li>
+<li><p>Good hardware compatibility</p></li>
+<li><p>Large software repositories</p></li>
+<li><p>Strong community support</p></li>
+<li><p>Long-Term Support (LTS) releases for stability</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Basic Linux Commands</strong></p>
+<p>Below are some commonly used Linux commands with explanations:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changes the current directory to <code class="docutils literal notranslate"><span class="pre">~/ros2_ws</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">~</span></code> symbol represents the current user’s home directory.</p>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/var/log</span></code> navigates to <code class="docutils literal notranslate"><span class="pre">/var/log</span></code>.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir my_folder</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Creates a new directory named <code class="docutils literal notranslate"><span class="pre">my_folder</span></code>.</p>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/tmp/test/data</span></code> creates nested directories if they don’t exist.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ls</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Lists files and directories in the current location.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code> shows detailed information (permissions, owner, size, modification date).</p>
+<p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-a</span></code> includes hidden files (those starting with <code class="docutils literal notranslate"><span class="pre">.</span></code>).</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo &quot;Hello&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Prints the text <code class="docutils literal notranslate"><span class="pre">Hello</span></code> to the terminal.</p>
+<p>You can also redirect output: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;Hello&quot;</span> <span class="pre">&gt;</span> <span class="pre">file.txt</span></code> writes <code class="docutils literal notranslate"><span class="pre">Hello</span></code> to <code class="docutils literal notranslate"><span class="pre">file.txt</span></code>.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pwd</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Displays the full path of the current working directory.</p>
+<p>Useful for confirming your location in the file system.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">touch word.txt</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Creates an empty file named <code class="docutils literal notranslate"><span class="pre">word.txt</span></code>.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rm word.txt</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Removes the file <code class="docutils literal notranslate"><span class="pre">word.txt</span></code>.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">folder</span></code> to delete a folder and its contents (use with caution).</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">chmod +x filename.py</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Adds execute (<code class="docutils literal notranslate"><span class="pre">x</span></code>) permission for all users to <code class="docutils literal notranslate"><span class="pre">filename.py</span></code>, making it runnable (e.g., <code class="docutils literal notranslate"><span class="pre">./filename.py</span></code>).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">u</span></code> = user (owner), <code class="docutils literal notranslate"><span class="pre">g</span></code> = group, <code class="docutils literal notranslate"><span class="pre">o</span></code> = others, <code class="docutils literal notranslate"><span class="pre">a</span></code> = all</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> = read, <code class="docutils literal notranslate"><span class="pre">w</span></code> = write, <code class="docutils literal notranslate"><span class="pre">x</span></code> = execute</p></li>
+</ul>
+<p>You can combine these flags (like <code class="docutils literal notranslate"><span class="pre">u+x</span></code>, <code class="docutils literal notranslate"><span class="pre">g-w</span></code>) to control permissions for specific users.</p>
+</div>
+</section>
+<section id="ros-2-environment-setup">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">2. ROS 2 Environment Setup</a><a class="headerlink" href="#ros-2-environment-setup" title="Link to this heading"></a></h2>
+<p>ROS 2 relies on combining workspaces using the shell environment.
+To use ROS 2, “source” a setup file (Linux):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source /opt/ros/humble/setup.bash</span>
+</pre></div>
+</div>
+<p><strong>Make sourcing permanent:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo &quot;source /opt/ros/humble/setup.bash&quot; &gt;&gt; ~/.bashrc</span>
+</pre></div>
+</div>
+<p><strong>Check your ROS environment:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">printenv | grep -i ROS</span>
+</pre></div>
+</div>
+<p>Output example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ROS_VERSION=2</span>
+<span class="go">ROS_DISTRO=humble</span>
+<span class="go">ROS_PYTHON_VERSION=3</span>
+</pre></div>
+</div>
+</section>
+<section id="using-turtlesim-ros2-and-rqt">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">3. Using turtlesim, ros2, and rqt</a><a class="headerlink" href="#using-turtlesim-ros2-and-rqt" title="Link to this heading"></a></h2>
+<p><cite>turtlesim</cite> is a simple simulator to help you learn core ROS 2 ideas.</p>
+<p><strong>Install turtlesim:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt update</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install ros-humble-turtlesim</span>
+</pre></div>
+</div>
+<p><strong>Check install:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 pkg executables turtlesim</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">turtlesim draw_square</span>
+<span class="go">turtlesim mimic</span>
+<span class="go">turtlesim turtle_teleop_key</span>
+<span class="go">turtlesim turtlesim_node</span>
+</pre></div>
+</div>
+<p><strong>Run turtlesim:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [turtlesim]: Starting turtlesim with node name /turtlesim</span>
+<span class="go">[INFO] [turtlesim]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]</span>
+</pre></div>
+</div>
+<p><strong>Open a new terminal and run:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtle_teleop_key</span>
+</pre></div>
+</div>
+<p>You will now see the turtle moving in the window as you use arrow keys.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pressing an arrow key only moves the turtle briefly (robot safety pattern).</p>
+</div>
+<p>To see the ROS graph:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 node list</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic list</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 service list</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action list</span>
+</pre></div>
+</div>
+<p><strong>Install and run rqt for GUI tools:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install &#39;~nros-humble-rqt*&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rqt</span>
+</pre></div>
+</div>
+</section>
+<section id="understanding-nodes">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">4. Understanding Nodes</a><a class="headerlink" href="#understanding-nodes" title="Link to this heading"></a></h2>
+<p>A <strong>node</strong> is a fundamental process that does some work in ROS 2.
+Each node in ROS should be responsible for a single, modular purpose, e.g. controlling the wheel motors or publishing the sensor data from a laser range-finder. Each node can send and receive data from other nodes via topics, services, actions, or parameters.</p>
+<img alt="../_images/Nodes-TopicandService.gif" src="../_images/Nodes-TopicandService.gif" />
+<p><strong>Run two nodes (turtlesim + teleop):</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtle_teleop_key</span>
+</pre></div>
+</div>
+<p><strong>List nodes:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 node list</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/turtlesim</span>
+<span class="go">/teleop_turtle</span>
+</pre></div>
+</div>
+<p><strong>Remap node name:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node --ros-args --remap __node:=my_turtle</span>
+</pre></div>
+</div>
+<p><strong>List after remap:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 node list</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/my_turtle</span>
+<span class="go">/turtlesim</span>
+<span class="go">/teleop_turtle</span>
+</pre></div>
+</div>
+<p><strong>Node info:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 node info /my_turtle</span>
+</pre></div>
+</div>
+<p>Output (truncated):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/my_turtle</span>
+<span class="go">Subscribers:</span>
+<span class="go">  /parameter_events: rcl_interfaces/msg/ParameterEvent</span>
+<span class="go">  /turtle1/cmd_vel: geometry_msgs/msg/Twist</span>
+<span class="go">Publishers:</span>
+<span class="go">  /parameter_events: rcl_interfaces/msg/ParameterEvent</span>
+<span class="go">  /rosout: rcl_interfaces/msg/Log</span>
+<span class="go">  /turtle1/color_sensor: turtlesim/msg/Color</span>
+<span class="go">  /turtle1/pose: turtlesim/msg/Pose</span>
+<span class="go">Service Servers:</span>
+<span class="go">  /clear: std_srvs/srv/Empty</span>
+<span class="go">  /kill: turtlesim/srv/Kill</span>
+<span class="go">  /my_turtle/describe_parameters: rcl_interfaces/srv/DescribeParameters</span>
+<span class="go">  /my_turtle/get_parameter_types: rcl_interfaces/srv/GetParameterTypes</span>
+<span class="go">  /my_turtle/get_parameters: rcl_interfaces/srv/GetParameters</span>
+<span class="go">  /my_turtle/list_parameters: rcl_interfaces/srv/ListParameters</span>
+<span class="go">  /my_turtle/set_parameters: rcl_interfaces/srv/SetParameters</span>
+<span class="go">  /my_turtle/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically</span>
+<span class="go">  /reset: std_srvs/srv/Empty</span>
+<span class="go">  /spawn: turtlesim/srv/Spawn</span>
+<span class="go">  /turtle1/set_pen: turtlesim/srv/SetPen</span>
+<span class="go">  /turtle1/teleport_absolute: turtlesim/srv/TeleportAbsolute</span>
+<span class="go">  /turtle1/teleport_relative: turtlesim/srv/TeleportRelative</span>
+<span class="go">Service Clients:</span>
+
+<span class="go">Action Servers:</span>
+<span class="go">  /turtle1/rotate_absolute: turtlesim/action/RotateAbsolute</span>
+<span class="go">Action Clients:</span>
+</pre></div>
+</div>
+</section>
+<section id="understanding-topics">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">5. Understanding Topics</a><a class="headerlink" href="#understanding-topics" title="Link to this heading"></a></h2>
+<p>A <strong>topic</strong> is a channel for message passing between nodes.</p>
+<p>A node may publish data to any number of topics and simultaneously have subscriptions to any number of topics.</p>
+<img alt="../_images/Topic-SinglePublisherandSingleSubscriber.gif" src="../_images/Topic-SinglePublisherandSingleSubscriber.gif" />
+<p><strong>List topics:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic list</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/parameter_events</span>
+<span class="go">/rosout</span>
+<span class="go">/turtle1/cmd_vel</span>
+<span class="go">/turtle1/color_sensor</span>
+<span class="go">/turtle1/pose</span>
+</pre></div>
+</div>
+<p><strong>List topics with type:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic list -t</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/parameter_events [rcl_interfaces/msg/ParameterEvent]</span>
+<span class="go">/rosout [rcl_interfaces/msg/Log]</span>
+<span class="go">/turtle1/cmd_vel [geometry_msgs/msg/Twist]</span>
+<span class="go">/turtle1/color_sensor [turtlesim/msg/Color]</span>
+<span class="go">/turtle1/pose [turtlesim/msg/Pose]</span>
+</pre></div>
+</div>
+<p><strong>Show messages on a topic (nothing shows until you move the turtle!):</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic echo /turtle1/cmd_vel</span>
+</pre></div>
+</div>
+<p>Output example when moving:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">linear:</span>
+<span class="go">  x: 2.0</span>
+<span class="go">  y: 0.0</span>
+<span class="go">  z: 0.0</span>
+<span class="go">angular:</span>
+<span class="go">  x: 0.0</span>
+<span class="go">  y: 0.0</span>
+<span class="go">  z: 0.0</span>
+<span class="go">---</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic pub &lt;topic_name&gt; &lt;msg_type&gt; &#39;&lt;args&gt;&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">'&lt;args&gt;'</span></code> argument is the actual data you’ll pass to the topic, in the structure you just discovered in the previous section.</p>
+<p>The turtle (and commonly the real robots which it is meant to emulate) require a steady stream of commands to operate continuously.
+So, to get the turtle moving, and keep it moving, you can use the following command.
+It’s important to note that this argument needs to be input in YAML syntax.
+Input the full command like so:</p>
+<p><strong>Publish a message (repeat):</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic pub /turtle1/cmd_vel geometry_msgs/msg/Twist &quot;{linear: {x: 2.0}, angular: {z: 1.8}}&quot;</span>
+</pre></div>
+</div>
+<p>With no command-line options, <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">pub</span></code> publishes the command in a steady stream at 1 Hz.</p>
+<p><strong>Publish once:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic pub --once -w 2 /turtle1/cmd_vel geometry_msgs/msg/Twist &quot;{linear: {x: 2.0}, angular: {z: 1.8}}&quot;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--once</span></code> is an optional argument meaning “publish one message then exit”.</p>
+<p><code class="docutils literal notranslate"><span class="pre">-w</span> <span class="pre">2</span></code> is an optional argument meaning “wait for two matching subscriptions”.
+This is needed because we have both turtlesim and the topic echo subscribed.</p>
+<p><strong>Topic info:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic info /turtle1/cmd_vel</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Type: geometry_msgs/msg/Twist</span>
+<span class="go">Publisher count: 1</span>
+<span class="go">Subscription count: 2</span>
+</pre></div>
+</div>
+<p><strong>Show message structure (type):</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 interface show geometry_msgs/msg/Twist</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Vector3  linear
+  float64 x
+  float64 y
+  float64 z
+Vector3  angular
+  float64 x
+  float64 y
+  float64 z
+</pre></div>
+</div>
+<p><strong>View topic publish rate:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic hz /turtle1/pose</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">average rate: 59.354</span>
+<span class="go">  min: 0.005s max: 0.027s std dev: 0.00284s window: 58</span>
+</pre></div>
+</div>
+<p><strong>View topic bandwidth:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic bw /turtle1/pose</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">1.51 KB/s from 62 messages</span>
+<span class="go">  Message size mean: 0.02 KB min: 0.02 KB max: 0.02 KB</span>
+</pre></div>
+</div>
+<p><strong>Find all topics by type:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic find geometry_msgs/msg/Twist</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/turtle1/cmd_vel</span>
+</pre></div>
+</div>
+</section>
+<section id="understanding-services">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">6. Understanding Services</a><a class="headerlink" href="#understanding-services" title="Link to this heading"></a></h2>
+<p>A <strong>service</strong> is a call-response (client-server) mechanism.</p>
+<img alt="../_images/Service-SingleServiceClient.gif" src="../_images/Service-SingleServiceClient.gif" />
+<p><strong>List all services:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 service list</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/clear</span>
+<span class="go">/kill</span>
+<span class="go">/reset</span>
+<span class="go">/spawn</span>
+<span class="go">...</span>
+<span class="go">/turtle1/set_pen</span>
+</pre></div>
+</div>
+<p><strong>Show service type:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 service type /clear</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">std_srvs/srv/Empty</span>
+</pre></div>
+</div>
+<p><strong>List all services and types:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 service list -t</span>
+</pre></div>
+</div>
+<p>Output (truncated):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/clear [std_srvs/srv/Empty]</span>
+<span class="go">/spawn [turtlesim/srv/Spawn]</span>
+<span class="go">/turtle1/set_pen [turtlesim/srv/SetPen]</span>
+</pre></div>
+</div>
+<p><strong>Introspect service type structure:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 interface show turtlesim/srv/Spawn</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>float32 x
+float32 y
+float32 theta
+string name
+---
+string name
+</pre></div>
+</div>
+<p><strong>Call service (/clear):</strong></p>
+<p>You can call a service using:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 service call &lt;service_name&gt; &lt;service_type&gt; &lt;arguments&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;arguments&gt;</span></code> part is optional.
+For example, you know that <code class="docutils literal notranslate"><span class="pre">Empty</span></code> typed services don’t have any arguments:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 service call /clear std_srvs/srv/Empty</span>
+</pre></div>
+</div>
+<p>Output (turtlesim window will clear and…)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(No output unless error; window clears)</span>
+</pre></div>
+</div>
+<p><strong>Call service (/spawn):</strong></p>
+<p>Input <code class="docutils literal notranslate"><span class="pre">&lt;arguments&gt;</span></code> in a service call from the command-line need to be in YAML syntax.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 service call /spawn turtlesim/srv/Spawn &quot;{x: 2, y: 2, theta: 0.2, name: &#39;&#39;}&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">requester: making request: turtlesim.srv.Spawn_Request(x=2.0, y=2.0, theta=0.2, name=&#39;&#39;)</span>
+<span class="go">response:</span>
+<span class="go">turtlesim.srv.Spawn_Response(name=&#39;turtle2&#39;)</span>
+</pre></div>
+</div>
+<p><strong>Find all Empty services:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 service find std_srvs/srv/Empty</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/clear</span>
+<span class="go">/reset</span>
+</pre></div>
+</div>
+</section>
+<section id="understanding-parameters">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">7. Understanding Parameters</a><a class="headerlink" href="#understanding-parameters" title="Link to this heading"></a></h2>
+<p>A <strong>parameter</strong> is a configurable value for a node.</p>
+<p><strong>List all parameters:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param list</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/teleop_turtle:</span>
+<span class="go">  scale_angular</span>
+<span class="go">  scale_linear</span>
+<span class="go">  use_sim_time</span>
+<span class="go">/turtlesim:</span>
+<span class="go">  background_b</span>
+<span class="go">  background_g</span>
+<span class="go">  background_r</span>
+<span class="go">  use_sim_time</span>
+</pre></div>
+</div>
+<p><strong>Get parameter value:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param get /turtlesim background_g</span>
+</pre></div>
+</div>
+<p>Output (e.g.):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Integer value is: 86</span>
+</pre></div>
+</div>
+<p><strong>Set parameter:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param set /turtlesim background_r 150</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Set parameter successful</span>
+</pre></div>
+</div>
+<p><strong>Dump parameters:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param dump /turtlesim &gt; turtlesim.yaml</span>
+</pre></div>
+</div>
+<p><strong>Load parameters:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param load /turtlesim turtlesim.yaml</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Set parameter background_b successful</span>
+<span class="go">Set parameter background_g successful</span>
+<span class="go">Set parameter background_r successful</span>
+</pre></div>
+</div>
+<p><strong>Run node with parameter file:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node --ros-args --params-file turtlesim.yaml</span>
+</pre></div>
+</div>
+</section>
+<section id="understanding-actions">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">8. Understanding Actions</a><a class="headerlink" href="#understanding-actions" title="Link to this heading"></a></h2>
+<p>Actions handle long-running, cancelable goals and provide feedback.</p>
+<img alt="../_images/Action-SingleActionClient.gif" src="../_images/Action-SingleActionClient.gif" />
+<p><strong>See action features in teleop_turtle node:</strong></p>
+<p>Output (when you run teleop):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Use arrow keys to move the turtle.</span>
+<span class="go">Use G|B|V|C|D|E|R|T keys to rotate to absolute orientations. &#39;F&#39; to cancel a rotation.</span>
+</pre></div>
+</div>
+<p><strong>List actions:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action list</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/turtle1/rotate_absolute</span>
+</pre></div>
+</div>
+<p><strong>Show action type:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action list -t</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/turtle1/rotate_absolute [turtlesim/action/RotateAbsolute]</span>
+</pre></div>
+</div>
+<p><strong>Action info:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action info /turtle1/rotate_absolute</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Action: /turtle1/rotate_absolute</span>
+<span class="go">Action clients: 1</span>
+<span class="go">  /teleop_turtle</span>
+<span class="go">Action servers: 1</span>
+<span class="go">  /turtlesim</span>
+</pre></div>
+</div>
+<p><strong>Show action message structure:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 interface show turtlesim/action/RotateAbsolute</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># The desired heading in radians
+float32 theta
+---
+# The angular displacement in radians to the starting position
+float32 delta
+---
+# The remaining rotation in radians
+float32 remaining
+</pre></div>
+</div>
+<p><strong>Send action goal:</strong></p>
+<p>Let’s send an action goal from the command line with the following syntax:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action send_goal &lt;action_name&gt; &lt;action_type&gt; &lt;values&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;values&gt;</span></code> need to be in YAML format.</p>
+<p>Keep an eye on the turtlesim window, and enter the following command into your terminal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute &quot;{theta: 1.57}&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Sending goal:</span>
+<span class="go">   theta: 1.57</span>
+
+<span class="go">Goal accepted with ID: f8db8f44410849eaa93d3feb747dd444</span>
+
+<span class="go">Result:</span>
+<span class="go">  delta: -1.568000316619873</span>
+<span class="go">Goal finished with status: SUCCEEDED</span>
+</pre></div>
+</div>
+<p><strong>Send action goal with feedback:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute &quot;{theta: -1.57}&quot; --feedback</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Feedback:</span>
+<span class="go">  remaining: -3.1268222332000732</span>
+<span class="go">Feedback:</span>
+<span class="go">  remaining: -3.1108222007751465</span>
+<span class="go">...</span>
+
+<span class="go">Result:</span>
+<span class="go">  delta: 3.1200008392333984</span>
+<span class="go">Goal finished with status: SUCCEEDED</span>
+</pre></div>
+</div>
+</section>
+<section id="recording-and-playing-back-data-with-ros2-bag">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">9. Recording and Playing Back Data with ros2 bag</a><a class="headerlink" href="#recording-and-playing-back-data-with-ros2-bag" title="Link to this heading"></a></h2>
+<p><strong>ros2 bag</strong> can record and replay data from topics.</p>
+<p><strong>Create directory for bag files:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir bag_files</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd bag_files</span>
+</pre></div>
+</div>
+<p><strong>Record a topic:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 bag record /turtle1/cmd_vel</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [rosbag2_storage]: Opened database &#39;rosbag2_YYYY_MM_DD-HH_MM_SS&#39;.</span>
+<span class="go">[INFO] [rosbag2_transport]: Subscribed to topic &#39;/turtle1/cmd_vel&#39;</span>
+</pre></div>
+</div>
+<p><strong>Record multiple topics with custom name:</strong></p>
+<p>You can also record multiple topics, as well as change the name of the file <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span></code> saves to.</p>
+<p>Run the following commands:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 bag record -o subset /turtle1/cmd_vel /turtle1/pose</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [rosbag2_storage]: Opened database &#39;subset&#39;.</span>
+<span class="go">[INFO] [rosbag2_transport]: Listening for topics...</span>
+<span class="go">[INFO] [rosbag2_transport]: Subscribed to topic &#39;/turtle1/cmd_vel&#39;</span>
+<span class="go">[INFO] [rosbag2_transport]: Subscribed to topic &#39;/turtle1/pose&#39;</span>
+<span class="go">[INFO] [rosbag2_transport]: All requested topics are subscribed. Stopping discovery...</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-o</span></code> option allows you to choose a unique name for your bag file.
+The following string, in this case <code class="docutils literal notranslate"><span class="pre">subset</span></code>, is the file name.</p>
+<p>To record more than one topic at a time, simply list each topic separated by a space.
+In this case, the command output above confirms that both topics are being recorded.</p>
+<p><strong>Stop recording:</strong> (Ctrl+C)</p>
+<p><strong>Bag info:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 bag info subset</span>
+</pre></div>
+</div>
+<p>Output (truncated):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Files:             subset.db3</span>
+<span class="go">Bag size:          228.5 KiB</span>
+<span class="go">Duration:          48.47s</span>
+<span class="go">Topic information: ...</span>
+<span class="go">  /turtle1/cmd_vel | Type: geometry_msgs/msg/Twist | Count: 9</span>
+<span class="go">  /turtle1/pose    | Type: turtlesim/msg/Pose      | Count: 3004</span>
+</pre></div>
+</div>
+<p><strong>Play bag:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 bag play subset</span>
+</pre></div>
+</div>
+<p><strong>Check publish rate:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic hz /turtle1/pose</span>
+</pre></div>
+</div>
+</section>
+<section id="create-and-set-up-a-ros2-workspace">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">10. Create and Set Up a ROS2 Workspace</a><a class="headerlink" href="#create-and-set-up-a-ros2-workspace" title="Link to this heading"></a></h2>
+<p>This section describes how to install Colcon (the ROS2 build tool), enable autocompletion, and set up your first ROS2 workspace with proper environment sourcing.</p>
+<p><strong>Step-by-Step Setup</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Install Colcon and Extensions</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt update</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install python3-colcon-common-extensions</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code> updates the package list from repositories.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">python3-colcon-common-extensions</span></code> installs colcon and helpful extensions.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Enable Colcon Command Autocompletion</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /usr/share/colcon_argcomplete/hook</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ls</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Check for the <code class="docutils literal notranslate"><span class="pre">colcon-argcomplete.bash</span></code> script in this directory for shell autocompletion.</p></li>
+</ul>
+</div>
+<p>Add the following to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> (open with e.g., gedit):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
+</pre></div>
+</div>
+<p>Or you can use this line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+<p>Then reload your bash configuration:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source ~/.bashrc</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>After this, colcon tab-completion will be available in new terminals.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Create the Workspace Directory Structure</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p ~/ros2_ws/src</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span></code> creates the directory tree for your workspace and its <code class="docutils literal notranslate"><span class="pre">src</span></code> folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/ros2_ws</span></code> moves you into your workspace.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Build the Empty Workspace</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Runs colcon to create initial build infrastructure even when no packages are present.</p></li>
+<li><p>Generates <code class="docutils literal notranslate"><span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">install</span></code>, and <code class="docutils literal notranslate"><span class="pre">log</span></code> folders.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="5">
+<li><p><strong>Source the Local Workspace</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source ~/ros2_ws/install/setup.bash</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>This overlays your workspace’s packages in the environment for the current shell session.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="6">
+<li><p><strong>Make Environment Changes Persistent</strong></p></li>
+</ol>
+<p>At the end of your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file, add these lines if not already present:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+<span class="nb">source</span><span class="w"> </span>/usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
+<span class="nb">source</span><span class="w"> </span>~/ros2_ws/install/setup.bash
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>These lines ensure ROS 2 and colcon functions and your workspace are always set up in every new shell.</p></li>
+</ul>
+</div>
+<p><strong>You are now ready to create ROS2 packages in your own workspace!</strong></p>
+</section>
+<section id="create-a-ros2-python-package">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">11. Create a ROS2 Python Package</a><a class="headerlink" href="#create-a-ros2-python-package" title="Link to this heading"></a></h2>
+<p>Follow these steps to create a new ROS2 Python package, optionally explore it in VS Code, and confirm that it is registered after building.</p>
+<p><strong>Step-by-Step Setup</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Move to the src Directory</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws/src</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Switch into the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder within your workspace, where all your ROS2 source code packages should be created.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Create a New Python Package</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 pkg create my_robot_controller --build-type ament_python --dependencies rclpy</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">pkg</span> <span class="pre">create</span></code> generates a ROS2 package named <code class="docutils literal notranslate"><span class="pre">my_robot_controller</span></code>.</p></li>
+<li><p>The option <code class="docutils literal notranslate"><span class="pre">--build-type</span> <span class="pre">ament_python</span></code> indicates this is a Python package.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--dependencies</span> <span class="pre">rclpy</span></code> adds the ROS2 Python client library as a required dependency.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>(Optional) Install and Launch Visual Studio Code for Exploring the Package</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo snap install code --classic</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">code .</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The first command installs VS Code using snap (if you don’t already have it).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">.</span></code> opens the current folder in VS Code to allow you to visually inspect package contents and structure.</p></li>
+</ul>
+</div>
+<p><strong>(Recommended) Install the ROS Extension for VS Code</strong></p>
+<p>After launching VS Code, it is highly recommended to install the official ROS extension for better development experience.</p>
+<ol class="arabic simple">
+<li><p>Click the Extensions icon (or press <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+X</span></code>).</p></li>
+<li><p>Search for <code class="docutils literal notranslate"><span class="pre">ROS</span></code>.</p></li>
+<li><p>Find the <strong>ROS</strong> extension published by Microsoft (with the blue dots as icon).</p></li>
+<li><p>Click <strong>Install</strong>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>This extension adds features like syntax highlighting, launch/URDF/parameter file support, convenient commands for building/running/testing, code navigation, and many other ROS-specific tools right inside VS Code.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Go Back to the Workspace Root and Build the Package</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/ros2_ws</span></code> returns to the base workspace directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> compiles and installs all packages in <code class="docutils literal notranslate"><span class="pre">src</span></code>, including your new Python package.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="5">
+<li><p><strong>Verify the Package Is Installed</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd install</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ls</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">install</span></code> directory, you should see a new folder named <code class="docutils literal notranslate"><span class="pre">my_robot_controller</span></code>.</p></li>
+<li><p>This confirms your newly created package was built and registered by the build system.</p></li>
+</ul>
+</div>
+<p><strong>You are now ready to write Python nodes in your custom package!</strong></p>
+</section>
+<section id="write-a-ros2-publisher-with-python">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">12. Write a ROS2 Publisher with Python</a><a class="headerlink" href="#write-a-ros2-publisher-with-python" title="Link to this heading"></a></h2>
+<p>This section explains how to write and run a simple ROS2 publisher node in Python to control the turtlesim robot in a circle.</p>
+<p><strong>Step-by-Step Setup</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Move to the Package’s Source Folder and Create the Node Script</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws/src/my_robot_controller/my_robot_controller</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">touch draw_circle.py</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">chmod +x draw_circle.py</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Enter the Python package directory (same name as the package).</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">touch</span></code> to create a new script <code class="docutils literal notranslate"><span class="pre">draw_circle.py</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span></code> makes the script executable.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Write the Publisher Node Code</strong></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometry_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Twist</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DrawCircleNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;draw_circle&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmd_vel_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Twist</span><span class="p">,</span> <span class="s2">&quot;/turtle1/cmd_vel&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">send_velocity_command</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Draw circle node has been started&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">send_velocity_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+        <span class="n">msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span>
+        <span class="n">msg</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmd_vel_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">DrawCircleNode</span><span class="p">()</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#!/usr/bin/env</span> <span class="pre">python3</span></code>: Shebang line to allow running script as an executable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">rclpy</span></code>: Main ROS2 Python library.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">rclpy.node</span> <span class="pre">import</span> <span class="pre">Node</span></code>: Import ROS2 Node base class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">geometry_msgs.msg</span> <span class="pre">import</span> <span class="pre">Twist</span></code>: Import Twist message type (for velocity commands).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">DrawCircleNode(Node)</span></code>: Define a new ROS2 node.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.create_publisher(...)</span></code>: Create a publisher for <code class="docutils literal notranslate"><span class="pre">/turtle1/cmd_vel</span></code> topic.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.create_timer(0.5,</span> <span class="pre">...)</span></code>: Set up a timer to call <code class="docutils literal notranslate"><span class="pre">send_velocity_command()</span></code> every 0.5 seconds.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">send_velocity_command()</span></code>: Create and publish a Twist message with linear and angular velocities to describe a circle.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">main</span></code> function initializes ROS2, starts the node, and keeps it spinning.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Add Dependencies to package.xml</strong></p></li>
+</ol>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;depend&gt;</span>rclpy<span class="nt">&lt;/depend&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;depend&gt;</span>geometry_msgs<span class="nt">&lt;/depend&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;depend&gt;</span>turtlesim<span class="nt">&lt;/depend&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Declare node’s ROS2 and message dependencies for build and run.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Update setup.py to Register the Entry Point</strong></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;draw_circle = my_robot_controller.draw_circle:main&quot;</span>
+    <span class="p">],</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>This makes your script runnable by <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code>.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="5">
+<li><p><strong>Build the Package and Source Your Workspace</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --symlink-install</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source ~/.bashrc</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Builds your package and allows immediate source code changes to take effect (symlink mode).</p></li>
+<li><p>Sourcing <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> ensures terminal picks up new executables.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="6">
+<li><p><strong>Run the Publisher Node</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run my_robot_controller draw_circle</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>You should see the turtle moving in a circle in the turtlesim window, indicating your velocity publisher is working!</p></li>
+</ul>
+</div>
+</section>
+<section id="write-a-ros2-subscriber-with-python">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">13. Write a ROS2 Subscriber with Python</a><a class="headerlink" href="#write-a-ros2-subscriber-with-python" title="Link to this heading"></a></h2>
+<p>This section shows how to write and run a simple ROS2 subscriber node in Python to listen to the turtle’s pose.</p>
+<p><strong>Step-by-Step Setup</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Create the Subscriber Script</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws/src/my_robot_controller/my_robot_controller</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">touch pose_subscriber.py</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">chmod +x pose_subscriber.py</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Enter the Python package directory.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">touch</span></code> to create <code class="docutils literal notranslate"><span class="pre">pose_subscriber.py</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span></code> makes it executable.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Write the Subscriber Node Code</strong></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">turtlesim.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pose</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PoseSubscriberNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;pose_subscriber&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pose_subscriber</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
+            <span class="n">Pose</span><span class="p">,</span> <span class="s2">&quot;/turtle1/pose&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pose_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pose_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Pose</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">PoseSubscriberNode</span><span class="p">()</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#!/usr/bin/env</span> <span class="pre">python3</span></code>: Shebang line for executability.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">turtlesim.msg</span> <span class="pre">import</span> <span class="pre">Pose</span></code>: Import the message type for the turtle’s pose.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.create_subscription(Pose,</span> <span class="pre">&quot;/turtle1/pose&quot;,</span> <span class="pre">...)</span></code>: Subscribe to the pose topic.</p></li>
+<li><p>The callback logs the full pose data to the terminal.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Register the Subscriber Node in setup.py</strong></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;draw_circle = my_robot_controller.draw_circle:main&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pose_subscriber = my_robot_controller.pose_subscriber:main&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Make sure each entry in the list is separated by a comma, and it is a good practice to also add a comma after the last entry. This avoids syntax errors if you add more nodes in the future.</p></li>
+<li><p>With this format, both <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">my_robot_controller</span> <span class="pre">draw_circle</span></code> and <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">my_robot_controller</span> <span class="pre">pose_subscriber</span></code> will be properly registered and executable.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Build and Source the Workspace</strong></p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --symlink-install</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source ~/.bashrc</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Rebuild after any code changes.</p></li>
+<li><p>Symlink install lets you test edits without reinstalling each time.</p></li>
+<li><p>Sourcing the workspace updates your environment.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="5">
+<li><p><strong>Run the Subscription System</strong></p></li>
+</ol>
+<p>Open three terminals and run:</p>
+<p><strong>1st terminal:</strong> Start turtlesim</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node</span>
+</pre></div>
+</div>
+<p><strong>2nd terminal:</strong> Start the publisher node</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run my_robot_controller draw_circle</span>
+</pre></div>
+</div>
+<p><strong>3rd terminal:</strong> Start the subscriber node</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run my_robot_controller pose_subscriber</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The subscriber terminal will show live pose messages from turtlesim as the turtle moves in a circle.</p></li>
+</ul>
+</div>
+</section>
+<section id="summary">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Summary</a><a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>You learned shell and Linux command basics.</p></li>
+<li><p>Set up and checked a working ROS 2 environment.</p></li>
+<li><p>Used turtlesim/rqt to demonstrate all core ROS 2 CLI tools and concepts.</p></li>
+<li><p>Key commands and feedback (output) for nodes, topics, services, parameters, actions, and bagging.</p></li>
+</ul>
+</section>
+<section id="references">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">References</a><a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>ROS 2 Humble official docs: <a class="reference external" href="https://docs.ros.org/en/humble/index.html">https://docs.ros.org/en/humble/index.html</a></p></li>
+<li><p>ROS 2 tutorials (YouTube): <a class="reference external" href="https://www.youtube.com/playlist?list=PLLSegLrePWgJudpPUof4-nVFHGkB62Izy">https://www.youtube.com/playlist?list=PLLSegLrePWgJudpPUof4-nVFHGkB62Izy</a></p></li>
+<li><p>How to install ROS2 on Ubuntu 22.04 using VirtualBox: <a class="reference external" href="https://www.youtube.com/watch?v=jm8WMgwu10s&amp;ab_channel=maiaVRobotics">https://www.youtube.com/watch?v=jm8WMgwu10s&amp;ab_channel=maiaVRobotics</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../docker/index.html" class="btn btn-neutral float-left" title="Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../contributing.html" class="btn btn-neutral float-right" title="Contribute to the Workshop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, NTU ACL Robot Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -12,7 +12,7 @@ To add a new page to the workshop:
    - For example, if the page is related to Docker, place it under the `docker/`
      directory.
 
-2. Update the `index.rst` file to include a reference to your new page.
+2. Update the `index.rst` file under workshop directory to include a reference to your new page.
 
    - Add the relative path to your `.rst` file under the appropriate section.
 
